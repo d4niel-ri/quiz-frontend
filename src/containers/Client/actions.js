@@ -1,4 +1,4 @@
-import { LOGIN, SET_LOGIN, SET_TOKEN, SET_USER } from '@containers/Client/constants';
+import { LOGIN, REGISTER, SET_LOGIN, SET_TOKEN, SET_USER, VERIFY_TOKEN } from '@containers/Client/constants';
 
 export const setLogin = (login) => ({
   type: SET_LOGIN,
@@ -15,6 +15,19 @@ export const login = (inputs, navigate, handleLoginInvalid) => ({
   inputs,
   navigate,
   handleLoginInvalid,
+});
+
+export const register = (inputs, navigate, handleRegisterError) => ({
+  type: REGISTER,
+  inputs,
+  navigate,
+  handleRegisterError,
+});
+
+export const verifyToken = (token, navigate) => ({
+  type: VERIFY_TOKEN,
+  token,
+  navigate,
 });
 
 export const setUser = (user) => ({

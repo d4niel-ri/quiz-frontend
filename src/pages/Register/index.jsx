@@ -10,25 +10,24 @@ import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedIn
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { createStructuredSelector } from 'reselect';
 
-import { login } from '@containers/Client/actions';
+import { register } from '@containers/Client/actions';
 import { selectLogin } from '@containers/Client/selectors';
 
 import classes from './style.module.scss';
 
-const Login = ({ isLogin }) => {
+const Register = ({ isLogin }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const [inputs, setInputs] = useState({
-    email: "", password: "",
+    email: "", username: "", password: "",
   });
 
   const [errors, setErrors] = useState({
-    email: "", password: ""
+    email: "", username: "", password: ""
   });
 
   const [mainError, setMainError] = useState("");
-
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -47,6 +46,21 @@ const Login = ({ isLogin }) => {
       return false;
     }
 
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    if (!emailRegex.test(inputs.email)) {
+      setErrors((prev) => ({...prev, email: "Please fill an email address"}));
+      return false;
+    }
+
+    return true;
+  }
+
+  const validateUsername = () => {
+    if (!inputs.username) {
+      setErrors((prev) => ({...prev, username: "app_error_required"}));
+      return false;
+    }
+
     return true;
   }
 
@@ -56,39 +70,44 @@ const Login = ({ isLogin }) => {
       return false;
     }
 
+    if (inputs.password.length < 6) {
+      setErrors((prev) => ({...prev, password: "Min 6 characters"}));
+      return false;
+    }
+
     return true;
   }
 
   const validateInputs = () => {
     const isValidatedEmail = validateEmail();
+    const isValidatedUsername = validateUsername();
     const isValidatedPassword = validatePassword();
 
-    if (!isValidatedEmail || !isValidatedPassword)
+    if (!isValidatedEmail || !isValidatedUsername || !isValidatedPassword)
       return false;
 
     return true;
   }
 
-  const handleLoginInvalid = () => {
-    setInputs({email: "", password: ""});
-    setMainError("Username or password is invalid");
+  const handleRegisterError = (errorMessage) => {
+    setMainError(errorMessage);
   }
 
-  const submitLogin = (e) => {
+  const submitRegister = (e) => {
     e.preventDefault();
     setMainError("");
-    setErrors({email: "", password: ""});
-    
+    setErrors({email: "", username: "", password: ""});
+
     // eslint-disable-next-line no-useless-return
     if (!validateInputs()) return;
 
-    dispatch(login(inputs, navigate, handleLoginInvalid));
+    dispatch(register(inputs, navigate, handleRegisterError));
   }
 
   useEffect(() => {
     if (isLogin) navigate("/");
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
 
   return (
     <main>
@@ -99,7 +118,7 @@ const Login = ({ isLogin }) => {
         <div className={classes.container}>
           <div className={classes.top_content}>
             <h1>Let&rsquo;s Get Started</h1>
-            <form onSubmit={submitLogin}>
+            <form onSubmit={submitRegister}>
               <div className={classes.input}>
                 <div className={classes.label}>
                   <label htmlFor="email">Email</label>
@@ -112,6 +131,20 @@ const Login = ({ isLogin }) => {
                 <input 
                   type="text" name="email" id="email" value={inputs.email} onChange={handleInputChange} 
                   placeholder='e.g. stephenking@lorem.com'  
+                />
+              </div>
+              <div className={classes.input}>
+                <div className={classes.label}>
+                  <label htmlFor="username">Username</label>
+                  {errors.username && (
+                    <p className={classes.error}>
+                      <FormattedMessage id={errors.username} />
+                    </p>
+                  )}
+                </div>
+                <input 
+                  type="text" name="username" id="username" value={inputs.username} onChange={handleInputChange} 
+                  placeholder='e.g. stephen_king'  
                 />
               </div>
               <div className={classes.input}>
@@ -151,26 +184,26 @@ const Login = ({ isLogin }) => {
                 </FormControl>
               </div>
               {/* error message */}
-              {mainError && (<p className={classes.error}>Username or password is invalid</p>)}
-              <Button type="submit" variant="contained" className={classes.btn}>Login</Button>
+              {mainError && (<p className={classes.error}>{mainError}</p>)}
+              <Button type="submit" variant="contained" className={classes.btn}>Register</Button>
             </form>
           </div>
 
           <div className={classes.bottom_content}>
-            New to Online Quiz? <a href='/register'>Signup here</a>
+            Already have an account? <a href='/login'>Login here</a>
           </div>
         </div>
       </div>
     </main>
   )
-};
+}
 
-Login.propTypes = {
+Register.propTypes = {
   isLogin: PropTypes.bool
-};
+}
 
 const mapStateToProps = createStructuredSelector({
   isLogin: selectLogin,
 });
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Register);

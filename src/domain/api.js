@@ -31,7 +31,14 @@ export const callAPI = async (endpoint, method, header = {}, params = {}, data =
 };
 
 export const ping = () => callAPI(urls.ping, 'get');
+export const testValidateToken = (token) => callAPI(
+  `${urls.user}/verify-token`, 'POST', { authorization: `Bearer ${token}` }
+);
 export const login = (inputs) => callAPI(`${urls.user}/login`, 'POST', {}, {}, inputs);
 export const getMyUserData = (token) => callAPI(
   `${urls.user}/my-data`, 'GET', { authorization: `Bearer ${token}` }
+);
+export const register = (inputs) => callAPI(`${urls.user}/register`, 'POST', {}, {}, inputs);
+export const getAvailableQuizzes = (token) => callAPI(
+  `${urls.quiz}`, 'GET', { authorization: `Bearer ${token}` }
 );

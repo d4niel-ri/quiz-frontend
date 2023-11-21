@@ -1,21 +1,63 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable prettier/prettier */
+/* eslint-disable arrow-body-style */
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
+import { connect, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { ping } from '@containers/App/actions';
 
-const Home = () => {
+import { selectToken } from '@containers/Client/selectors';
+import { createStructuredSelector } from 'reselect';
+import defaultImage from '@static/images/bg-sidebar-desktop.svg';
+import { getQuizzes } from './actions';
+import { selectQuizzes } from './selectors';
+
+import classes from "./style.module.scss";
+
+const Home = ({ token, quizzes }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(ping());
-  }, [dispatch]);
+    dispatch(getQuizzes(token));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div>
-      <FormattedMessage id="app_greeting" />
-    </div>
+    <main className={classes.main}>
+      <div className={classes.container}>
+        <h1>Available Quizzes</h1>
+        <div className={classes.quizzes}>
+          {quizzes.map((quiz) => (
+            <div key={quiz.id} className={classes.card}>
+              <div className={classes.card_image}>
+                <img src={defaultImage} alt='' />
+              </div>
+              <div className={classes.card_desc}>
+                <div className={classes.title}>
+                  {quiz.title}
+                </div>
+                <div className={classes.qs_count}>
+                  {quiz.questionCount} Qs
+                </div>
+              </div>
+            </div>
+          ))}  
+        </div>
+      </div>  
+    </main>
   );
 };
 
-export default Home;
+Home.propTypes = {
+  token: PropTypes.string,
+  quizzes: PropTypes.array,
+};
+
+const mapStateToProps = createStructuredSelector({
+  token: selectToken,
+  quizzes: selectQuizzes,
+});
+
+export default connect(mapStateToProps)(Home);
