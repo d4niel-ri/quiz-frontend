@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import config from '@config/index';
 import { merge } from 'lodash';
 
@@ -30,3 +31,7 @@ export const callAPI = async (endpoint, method, header = {}, params = {}, data =
 };
 
 export const ping = () => callAPI(urls.ping, 'get');
+export const login = (inputs) => callAPI(`${urls.user}/login`, 'POST', {}, {}, inputs);
+export const getMyUserData = (token) => callAPI(
+  `${urls.user}/my-data`, 'GET', { authorization: `Bearer ${token}` }
+);
