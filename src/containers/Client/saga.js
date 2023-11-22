@@ -2,7 +2,7 @@ import { setLoading } from '@containers/App/actions';
 import { takeLatest, call, put } from 'redux-saga/effects';
 
 import { getMyUserData, login, register, testValidateToken } from '@domain/api';
-import { LOGIN, REGISTER, VERIFY_TOKEN } from './constants';
+import { LOGIN, LOGOUT, REGISTER, VERIFY_TOKEN } from './constants';
 import { setLogin, setToken, setUser } from './actions';
 
 function* doLogin({ inputs, navigate, handleLoginInvalid }) {
@@ -16,6 +16,19 @@ function* doLogin({ inputs, navigate, handleLoginInvalid }) {
     yield call(navigate, '/');
   } catch (error) {
     yield call(handleLoginInvalid);
+  }
+  yield put(setLoading(false));
+}
+
+function* doLogout({ navigate }) {
+  yield put(setLoading(true));
+  try {
+    yield put(setLogin(false));
+    yield put(setToken(null));
+    yield put(setUser(null));
+    yield call(navigate, '/login');
+  } catch (error) {
+    console.error(error);
   }
   yield put(setLoading(false));
 }
@@ -46,6 +59,7 @@ function* doVerifyToken({ token, navigate }) {
 
 export default function* clientSaga() {
   yield takeLatest(LOGIN, doLogin);
+  yield takeLatest(LOGOUT, doLogout);
   yield takeLatest(REGISTER, doRegister);
   yield takeLatest(VERIFY_TOKEN, doVerifyToken);
 }

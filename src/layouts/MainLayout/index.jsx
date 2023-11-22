@@ -6,21 +6,32 @@ import { createStructuredSelector } from 'reselect';
 import { selectLocale, selectTheme } from '@containers/App/selectors';
 
 import Navbar from '@components/Navbar';
+import { selectLogin, selectUser } from '@containers/Client/selectors';
 
-const MainLayout = ({ children, locale, theme, intl: { formatMessage } }) => (
+const MainLayout = ({ children, isLogin, user, locale, theme, intl: { formatMessage } }) => (
   <div>
-    <Navbar title={formatMessage({ id: 'app_title_header' })} locale={locale} theme={theme} />
+    <Navbar
+      isLogin={isLogin}
+      user={user}
+      title={formatMessage({ id: 'app_title_header' })}
+      locale={locale}
+      theme={theme}
+    />
     {children}
   </div>
 );
 
 const mapStateToProps = createStructuredSelector({
+  isLogin: selectLogin,
+  user: selectUser,
   locale: selectLocale,
   theme: selectTheme,
 });
 
 MainLayout.propTypes = {
   children: PropTypes.element.isRequired,
+  isLogin: PropTypes.bool.isRequired,
+  user: PropTypes.object,
   locale: PropTypes.string,
   theme: PropTypes.string,
   intl: PropTypes.object,

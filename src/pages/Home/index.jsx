@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable prettier/prettier */
 /* eslint-disable arrow-body-style */
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -17,12 +17,19 @@ import classes from "./style.module.scss";
 
 const Home = ({ token, quizzes }) => {
   const dispatch = useDispatch();
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   useEffect(() => {
     dispatch(ping());
     dispatch(getQuizzes(token));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (!hasMounted) return null;
 
   return (
     <main className={classes.main}>

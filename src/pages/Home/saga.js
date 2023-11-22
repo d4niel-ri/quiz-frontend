@@ -10,7 +10,7 @@ function* doGetQuizzes({ token }) {
     const response = yield call(getAvailableQuizzes, token);
     yield put(setQuizzes(response.data));
   } catch (error) {
-    console.error(error);
+    // error
   }
   yield put(setLoading(false));
 }

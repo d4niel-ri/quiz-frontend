@@ -28,8 +28,8 @@ const Login = ({ isLogin }) => {
   });
 
   const [mainError, setMainError] = useState("");
-
   const [showPassword, setShowPassword] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -87,8 +87,11 @@ const Login = ({ isLogin }) => {
 
   useEffect(() => {
     if (isLogin) navigate("/");
+    setHasMounted(true);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (!hasMounted) return null;
 
   return (
     <main>
