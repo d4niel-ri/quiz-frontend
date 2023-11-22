@@ -10,6 +10,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import LocalActivitySharpIcon from '@mui/icons-material/LocalActivitySharp';
+import config from '@config/index';
 
 import { setLocale } from '@containers/App/actions';
 
@@ -65,7 +66,11 @@ const Navbar = ({ isLogin, user, title, locale, theme }) => {
         <div className={classes.toolbar}>
           {isLogin && (
             <div className={classes.profile} onClick={handleClickProfile}>
-              <Avatar className={classes.img} />
+              {user.imageUrl ? (
+                <img src={`${config.api.host}${user.imageUrl}`} alt="" />
+              ) : (
+                <Avatar className={classes.img} />
+              )}
             </div>
           )}
           <div className={classes.toggle} onClick={handleClick}>

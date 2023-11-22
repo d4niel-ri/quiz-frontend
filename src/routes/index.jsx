@@ -4,6 +4,7 @@ import Home from '@pages/Home';
 import Login from '@pages/Login';
 import NotFound from '@pages/NotFound';
 import Register from '@pages/Register';
+import Settings from '@pages/Settings';
 
 const routes = [
   {
@@ -11,6 +12,13 @@ const routes = [
     name: 'Home',
     protected: true,
     component: Home,
+    layout: MainLayout,
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    protected: true,
+    component: Settings,
     layout: MainLayout,
   },
   {

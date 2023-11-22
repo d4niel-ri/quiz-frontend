@@ -42,3 +42,6 @@ export const register = (inputs) => callAPI(`${urls.user}/register`, 'POST', {},
 export const getAvailableQuizzes = (token) => callAPI(
   `${urls.quiz}`, 'GET', { authorization: `Bearer ${token}` }
 );
+export const changeProfile = (token, inputs) => callAPI(
+  urls.user, 'PUT', { authorization: `Bearer ${token}` }, {}, inputs
+);
