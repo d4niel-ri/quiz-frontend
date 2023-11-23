@@ -1,5 +1,4 @@
-import { SET_QUIZZES } from '@pages/Home/constants';
-import { GET_COMPLETED_QUIZZES, GET_CREATED_QUIZZES } from './constants';
+import { GET_COMPLETED_QUIZZES, GET_CREATED_QUIZZES, SET_QUIZZES } from './constants';
 
 export const setQuizzes = (quizzes) => ({
   type: SET_QUIZZES,

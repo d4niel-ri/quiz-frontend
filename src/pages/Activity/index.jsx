@@ -9,10 +9,10 @@ import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { selectToken } from '@containers/Client/selectors';
-import { selectQuizzes } from '@pages/Home/selectors';
 
 import { selectLoading } from '@containers/App/selectors';
 import defaultImage from '@static/images/bg-sidebar-desktop.svg';
+import { selectQuizzes } from './selectors';
 import { getCompletedQuizzes, getCreatedQuizzes } from './actions';
 
 import classes from "./style.module.scss";
@@ -43,7 +43,9 @@ export const Activity = ({ loading, token, quizzes }) => {
       <div className={classes.container}>
         <header>
           <h1>Activity</h1>
-          <Button variant='contained' className={classes.btn}>Create a quiz</Button>
+          <Button variant='contained' className={classes.btn} onClick={() => navigate("/create-quiz")}>
+            Create a quiz
+          </Button>
         </header>
         <nav>
           <div 

@@ -51,3 +51,6 @@ export const getCreatedQuizzes = (token) => callAPI(
 export const changeProfile = (token, inputs) => callAPI(
   urls.user, 'PUT', { authorization: `Bearer ${token}` }, {}, inputs
 );
+export const createQuiz = (token, inputs) => callAPI(
+  urls.quiz, 'POST', { authorization: `Bearer ${token}` }, {}, inputs
+);

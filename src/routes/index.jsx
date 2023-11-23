@@ -1,5 +1,7 @@
 import MainLayout from '@layouts/MainLayout';
 import Activity from '@pages/Activity';
+import CreateQuiz from '@pages/CreateQuiz';
+import EditQuiz from '@pages/EditQuiz';
 
 import Home from '@pages/Home';
 import Login from '@pages/Login';
@@ -27,6 +29,20 @@ const routes = [
     name: 'Activity',
     protected: true,
     component: Activity,
+    layout: MainLayout,
+  },
+  {
+    path: '/create-quiz',
+    name: 'Create Quiz',
+    protected: true,
+    component: CreateQuiz,
+    layout: MainLayout,
+  },
+  {
+    path: '/edit-quiz/:quiz_id',
+    name: 'Edit Quiz',
+    protected: true,
+    component: EditQuiz,
     layout: MainLayout,
   },
   {
