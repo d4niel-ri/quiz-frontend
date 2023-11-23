@@ -1,4 +1,5 @@
 import MainLayout from '@layouts/MainLayout';
+import Activity from '@pages/Activity';
 
 import Home from '@pages/Home';
 import Login from '@pages/Login';
@@ -19,6 +20,13 @@ const routes = [
     name: 'Settings',
     protected: true,
     component: Settings,
+    layout: MainLayout,
+  },
+  {
+    path: '/activity',
+    name: 'Activity',
+    protected: true,
+    component: Activity,
     layout: MainLayout,
   },
   {

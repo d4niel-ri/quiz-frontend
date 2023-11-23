@@ -13,8 +13,9 @@ import { selectToken, selectUser } from '@containers/Client/selectors';
 import { Avatar, Button } from '@mui/material';
 import ChangeUsername from './components/ChangeUsername';
 import ChangeEmail from './components/ChangeEmail';
-import classes from "./style.module.scss";
 import ChangeImage from './components/ChangeImage';
+
+import classes from "./style.module.scss";
 
 const Settings = ({ token, user }) => {
   

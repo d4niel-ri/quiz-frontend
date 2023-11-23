@@ -114,7 +114,7 @@ const Login = ({ isLogin }) => {
                 </div>
                 <input 
                   type="text" name="email" id="email" value={inputs.email} onChange={handleInputChange} 
-                  placeholder='e.g. stephenking@lorem.com'  
+                  placeholder='e.g. stephenking@lorem.com' autoComplete='off'
                 />
               </div>
               <div className={classes.input}>

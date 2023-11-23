@@ -1,0 +1,3 @@
+export const SET_QUIZZES = 'Activity/SET_QUIZZES';
+export const GET_COMPLETED_QUIZZES = 'Activity/GET_COMPLETED_QUIZZES';
+export const GET_CREATED_QUIZZES = 'Activity/GET_CREATED_QUIZZES';
