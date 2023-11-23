@@ -7,6 +7,7 @@ import homeSaga from '@pages/Home/saga';
 import settingsSaga from '@pages/Settings/saga';
 import activitySaga from '@pages/Activity/saga';
 import createQuizSaga from '@pages/CreateQuiz/saga';
+import editQuizSaga from '@pages/EditQuiz/saga';
 
 export default function* rootSaga() {
   yield all([
@@ -16,5 +17,6 @@ export default function* rootSaga() {
     activitySaga(),
     settingsSaga(),
     createQuizSaga(),
+    editQuizSaga(),
   ]);
 }

@@ -1,0 +1,9 @@
+@import '@styles/base';
+
+.btn {
+  @include directionX;
+  gap: 0.5rem;
+  align-items: center;
+  background-color: $color-alabaster;
+  color: #000;
+}

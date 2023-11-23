@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable prettier/prettier */
 import config from '@config/index';
 import { merge } from 'lodash';
@@ -8,6 +9,7 @@ const urls = {
   ping: '',
   user: '/api/user',
   quiz: '/api/quiz',
+  question: '/api/question',
 };
 
 export const callAPI = async (endpoint, method, header = {}, params = {}, data = {}) => {
@@ -54,3 +56,15 @@ export const changeProfile = (token, inputs) => callAPI(
 export const createQuiz = (token, inputs) => callAPI(
   urls.quiz, 'POST', { authorization: `Bearer ${token}` }, {}, inputs
 );
+export const getQuiz = (token, quiz_id) => callAPI(
+  urls.quiz, 'GET', { authorization: `Bearer ${token}` }, {id: quiz_id}
+);
+export const getQuestions = (token, quiz_id) => callAPI(
+  `${urls.question}/${quiz_id}`, 'GET', { authorization: `Bearer ${token}` }
+);
+export const updateQuiz = (token, quiz_id, inputs) => callAPI(
+  `${urls.quiz}/${quiz_id}`, 'PUT', { authorization: `Bearer ${token}` }, {}, inputs
+);
+export const deleteQuestion = (token, question_id) => callAPI(
+  `${urls.question}/${question_id}`, 'DELETE', { authorization: `Bearer ${token}` }
+)

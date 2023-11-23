@@ -5,7 +5,7 @@ import { connect, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectLogin, selectToken } from '@containers/Client/selectors';
-import { verifyToken } from './actions';
+import { verifyToken } from '@containers/Client/actions';
 
 const Client = ({ login, token, children }) => {
   const navigate = useNavigate();

@@ -12,6 +12,7 @@ import { selectToken } from '@containers/Client/selectors';
 
 import { FormattedMessage } from 'react-intl';
 import { Button } from '@mui/material';
+import Back from '@components/Back';
 import { createQuiz } from './actions';
 
 import classes from "./style.module.scss";
@@ -61,15 +62,16 @@ const CreateQuiz = ({ token }) => {
 
   const submitQuiz = (e) => {
     e.preventDefault();
-    console.log("<< CLICKED");
     setErrors({title: "", description: ""});
 
     // eslint-disable-next-line no-useless-return
     if (!validateInputs()) return;
 
-    console.log("LULUS");
-
     dispatch(createQuiz(token, inputs, navigate));
+  }
+
+  const handleClickBack = () => {
+    navigate("/activity");
   }
 
   const [hasMounted, setHasMounted] = useState(false);
@@ -83,6 +85,9 @@ const CreateQuiz = ({ token }) => {
   return (
     <main className={classes.main}>
       <div className={classes.container}>
+        <header>
+          <Back handleClick={handleClickBack} />
+        </header>
         <h1>Create Quiz</h1>
         <form onSubmit={submitQuiz}>
           <div className={classes.input}>

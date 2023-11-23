@@ -1,0 +1,128 @@
+@import '@styles/base';
+
+// Reset
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
+}
+
+.main {
+  margin-top: 70px;
+  position: relative;
+  background: $color-alabaster;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: fit-content;
+  min-height: calc(100vh - 70px);
+
+  .container {
+    margin-top: 1rem;
+    width: 90%;
+    @include directionY;
+    align-items: center;
+
+    header {
+      width: 100%;
+    }
+
+    h1 {
+      width: 100%;
+      margin-top: 1rem;
+      font-size: 160%;
+      color: $color-marine-blue;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 40rem;
+      @include directionY;
+
+      .quiz {
+        margin-top: 1rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 10px;
+        @include directionX;
+        align-items: center;
+        justify-content: space-between;
+        transition: 0.3s background-color;
+        cursor: pointer;
+
+        .left {
+          @include directionY;
+          gap: 0.25rem;
+          font-weight: 500;
+
+          .title {
+            font-size: 100%;
+          }
+
+          .description {
+            font-size: 90%;
+            color: $color-cool-gray;
+          }
+
+          .visible {
+            @include directionX;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 90%;
+            color: $color-cool-gray;
+          }
+        }
+      }
+
+      .quiz:hover {
+        background-color: $color-magnolia;
+      }
+
+      h2 {
+        padding: 0 0.5rem;
+        margin-top: 1.5rem;
+        font-size: 100%;
+        font-weight: 500;
+      }
+
+      .questions {
+        margin-top: 1rem;
+        width: 100%;
+        padding: 0 0.5rem;
+        @include directionY;
+        gap: 1rem;
+        margin-bottom: 5rem;
+      }
+    }
+
+    .footer {
+      position: fixed;
+      z-index: 1;
+      bottom: 0;
+      width: 100%;
+      padding: 0.5rem 0;
+      border-top: 1px solid $color-cool-gray;
+      background-color: $color-white;
+      @include directionX;
+      justify-content: center;
+
+      .buttons {
+        width: 90%;
+        max-width: 40rem;
+        padding: 0 0.5rem;
+        @include directionX;
+        justify-content: space-between;
+
+        .btn {
+          background-color: $color-marine-blue;
+          text-transform: capitalize;
+          margin-left: auto;
+        }
+
+        .btn:hover {
+          background-color: $color-purplish-blue;
+        }
+      }
+    }
+  }
+}
