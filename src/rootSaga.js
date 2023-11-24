@@ -11,6 +11,7 @@ import editQuizSaga from '@pages/EditQuiz/saga';
 import adminSaga from '@pages/Admin/saga';
 import createQuestionSaga from '@pages/CreateQuestion/saga';
 import editQuestionSaga from '@pages/EditQuestion/saga';
+import detailSaga from '@pages/Detail/saga';
 
 export default function* rootSaga() {
   yield all([
@@ -24,5 +25,6 @@ export default function* rootSaga() {
     adminSaga(),
     createQuestionSaga(),
     editQuestionSaga(),
+    detailSaga(),
   ]);
 }

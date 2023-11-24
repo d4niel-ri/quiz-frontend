@@ -38,11 +38,8 @@ const EditQuiz = ({ user, token, quiz, questions }) => {
   }
 
   const handleClickBack = () => {
-    navigate("/activity");
+    navigate(-1);
   }
-
-  console.log(quiz, "<< QUIZ");
-  console.log(questions, "<< QUESTIONS");
 
   useEffect(() => {
     dispatch(getQuiz(user, token, quiz_id, setAllow, navigate));

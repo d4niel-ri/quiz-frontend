@@ -7,6 +7,7 @@ import activityReducer, { storedKey as storedActivityState } from '@pages/Activi
 import editQuizReducer, { storedKey as storedEditQuizState } from '@pages/EditQuiz/reducer';
 import adminReducer, { storedKey as storedAdminState } from '@pages/Admin/reducer';
 import editQuestionReducer, { storedKey as storedEditQuestionState } from '@pages/EditQuestion/reducer';
+import detailReducer, { storedKey as storedDetailState } from '@pages/Detail/reducer';
 import languageReducer from '@containers/Language/reducer';
 
 import { mapWithPersistor } from './persistence';
@@ -19,6 +20,7 @@ const storedReducers = {
   editQuiz: { reducer: editQuizReducer, whitelist: storedEditQuizState },
   admin: { reducer: adminReducer, whitelist: storedAdminState },
   editQuestion: { reducer: editQuestionReducer, whitelist: storedEditQuestionState },
+  detail: { reducer: detailReducer, whitelist: storedDetailState },
 };
 
 const temporaryReducers = {

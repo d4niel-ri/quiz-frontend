@@ -17,6 +17,7 @@ const editQuizReducer = (state = initialState, action) =>
 
       case SET_QUESTIONS:
         draft.questions = action.questions;
+        break;
     }
   });
 

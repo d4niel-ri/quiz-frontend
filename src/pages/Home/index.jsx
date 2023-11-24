@@ -11,12 +11,14 @@ import { selectToken } from '@containers/Client/selectors';
 import { createStructuredSelector } from 'reselect';
 import defaultImage from '@static/images/bg-sidebar-desktop.svg';
 import { FormattedMessage } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 import { getQuizzes } from './actions';
 import { selectQuizzes } from './selectors';
 
 import classes from "./style.module.scss";
 
 const Home = ({ token, quizzes }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -38,7 +40,7 @@ const Home = ({ token, quizzes }) => {
         <h1><FormattedMessage id='app_available_quizzes' /> </h1>
         <div className={classes.quizzes}>
           {quizzes.map((quiz) => (
-            <div key={quiz.id} className={classes.card}>
+            <div key={quiz.id} className={classes.card} onClick={() => navigate(`/detail/${quiz.id}`)}>
               <div className={classes.card_image}>
                 <img src={defaultImage} alt='' />
               </div>

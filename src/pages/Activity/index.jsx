@@ -67,7 +67,7 @@ export const Activity = ({ loading, token, quizzes }) => {
             {navChosen === "Completed" ? (
               <div className={classes.quizzes}>
                 {quizzes.map((quiz) => (
-                  <div key={quiz.id} className={classes.card}>
+                  <div key={quiz.id} className={classes.card} onClick={() => navigate(`/detail/${quiz.id}`)}>
                     <div className={classes.card_image}>
                       <img src={defaultImage} alt='' />
                       <div className={classes.labels}>
@@ -85,7 +85,7 @@ export const Activity = ({ loading, token, quizzes }) => {
               ) : (
               <div className={classes.quizzes}>
                 {quizzes.map((quiz) => (
-                  <div key={quiz.id} className={classes.card}>
+                  <div key={quiz.id} className={classes.card} onClick={() => navigate(`/detail/${quiz.id}`)}>
                     <div className={classes.card_image}>
                       <img src={defaultImage} alt='' />
                       <div className={classes.labels}>

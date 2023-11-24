@@ -3,6 +3,7 @@ import Activity from '@pages/Activity';
 import Admin from '@pages/Admin';
 import CreateQuestion from '@pages/CreateQuestion';
 import CreateQuiz from '@pages/CreateQuiz';
+import Detail from '@pages/Detail';
 import EditQuestion from '@pages/EditQuestion';
 import EditQuiz from '@pages/EditQuiz';
 
@@ -32,6 +33,13 @@ const routes = [
     name: 'Activity',
     protected: true,
     component: Activity,
+    layout: MainLayout,
+  },
+  {
+    path: '/detail/:quiz_id',
+    name: 'Detail',
+    protected: true,
+    component: Detail,
     layout: MainLayout,
   },
   {
