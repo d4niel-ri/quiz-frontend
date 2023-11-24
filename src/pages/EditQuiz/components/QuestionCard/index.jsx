@@ -41,7 +41,7 @@ const QuestionCard = ({ question, dispatch, token }) => {
       <div className={classes.answers}>
         {answers.map((answer) => (
           <div key={answer.choice} className={classes.answer}>
-            {answer.isCorrect ? 
+            {answer.isCorrect === "true" ? 
               <CheckIcon className={classes.correct} /> : 
               <ClearIcon className={classes.wrong} />
             }

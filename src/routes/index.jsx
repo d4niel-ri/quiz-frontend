@@ -1,6 +1,7 @@
 import MainLayout from '@layouts/MainLayout';
 import Activity from '@pages/Activity';
 import Admin from '@pages/Admin';
+import CreateQuestion from '@pages/CreateQuestion';
 import CreateQuiz from '@pages/CreateQuiz';
 import EditQuiz from '@pages/EditQuiz';
 
@@ -51,6 +52,13 @@ const routes = [
     name: 'Admin',
     protected: true,
     component: Admin,
+    layout: MainLayout,
+  },
+  {
+    path: '/create-question/:quiz_id/:question_no',
+    name: 'Create Question',
+    protected: true,
+    component: CreateQuestion,
     layout: MainLayout,
   },
   {

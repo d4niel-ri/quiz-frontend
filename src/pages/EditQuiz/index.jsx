@@ -77,7 +77,12 @@ const EditQuiz = ({ user, token, quiz, questions }) => {
         </div>
         <div className={classes.footer}>
           <div className={classes.buttons}>
-            <Button variant='contained' className={classes.btn}>Create Question</Button>
+            <Button 
+              variant='contained' className={classes.btn} 
+              onClick={() => navigate(`/create-question/${quiz.id}/${questions.length + 1}`)}
+            >
+              Create Question
+            </Button>
           </div>
         </div>
       </div>

@@ -70,6 +70,9 @@ export const getQuestions = (token, quiz_id) => callAPI(
 export const updateQuiz = (token, quiz_id, inputs) => callAPI(
   `${urls.quiz}/${quiz_id}`, 'PUT', { authorization: `Bearer ${token}` }, {}, inputs
 );
+export const createQuestion = (token, quiz_id, inputs) => callAPI(
+  `${urls.question}/${quiz_id}`, 'POST', { authorization: `Bearer ${token}` }, {}, inputs
+);
 export const deleteQuestion = (token, question_id) => callAPI(
   `${urls.question}/${question_id}`, 'DELETE', { authorization: `Bearer ${token}` }
 )

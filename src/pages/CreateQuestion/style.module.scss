@@ -1,0 +1,119 @@
+@import '@styles/base';
+
+// Reset
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
+}
+
+.main {
+  margin-top: 70px;
+  position: relative;
+  background: $color-alabaster;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: fit-content;
+  min-height: calc(100vh - 70px);
+
+  .container {
+    margin-top: 1rem;
+    width: 90%;
+   
+    h1 {
+      font-size: 160%;
+      color: $color-marine-blue;
+    }
+
+    form {
+      margin-top: 1rem;
+      @include directionY;
+      align-items: center;
+      gap: 1rem;
+
+      section {
+        width: 100%;
+        max-width: 40rem;
+        @include directionY;
+        gap: 0.25rem;
+
+        div.label {
+          font-size: 18px;
+          font-weight: 500;
+          display: flex;
+          color: $color-marine-blue;
+          justify-content: space-between;
+        }
+    
+        input {
+          width: 100%;
+          padding: 0.5rem;
+          border-radius: 5px;
+          border: 1px solid #A6A6A6; 
+          color: #000;
+          background: #fff; 
+          font-size: 16px;
+          font-weight: 500; 
+        }
+
+        textarea {
+          resize: none;
+          width: 100%;
+          padding: 0.5rem;
+          border-radius: 5px;
+          border: 1px solid #A6A6A6; 
+          color: #000;
+          background: #fff; 
+          font-size: 16px;
+          font-weight: 500; 
+        }
+
+        p.error {
+          margin: 0;
+          color: $color-strawberry-red;
+        }
+
+        div.answers {
+          margin-top: 0.5rem;
+          @include directionY;
+          width: 100%;
+          align-items: center;
+          gap: 1.25rem;
+
+          div.answer {
+            width: 100%;
+            @include directionY;
+            align-items: center;
+            gap: 0.5rem;
+
+            .is_correct {
+              @include directionX;
+              gap: 0.25rem;
+              align-items: center;
+
+              input[type="checkbox"] {
+                width: 1rem;
+                height: 1rem;
+                accent-color: $color-purplish-blue;
+                border: 1px solid $color-light-gray !important;
+                color: $color-light-gray;
+              }
+
+              label {
+                font-size: 70%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $screen-md-limit) {
+    height: calc(100vh - 57px);
+    margin-top: 57px;
+    @include directionX;
+  }
+}
