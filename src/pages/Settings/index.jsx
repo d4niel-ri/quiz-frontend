@@ -11,6 +11,7 @@ import config from '@config/index';
 import { createStructuredSelector } from 'reselect';
 import { selectToken, selectUser } from '@containers/Client/selectors';
 import { Avatar, Button } from '@mui/material';
+import { FormattedMessage } from 'react-intl';
 import ChangeUsername from './components/ChangeUsername';
 import ChangeEmail from './components/ChangeEmail';
 import ChangeImage from './components/ChangeImage';
@@ -57,7 +58,7 @@ const Settings = ({ token, user }) => {
   return (
     <main className={classes.main}>
       <div className={classes.container}>
-        <h1>Settings</h1>
+        <h1><FormattedMessage id="app_settings" /></h1>
         <div className={classes.sections}>
           <section>
             <div className={classes.title}>
@@ -73,7 +74,7 @@ const Settings = ({ token, user }) => {
                 )}
               </div>
               <Button variant='contained' onClick={handleClickOpenImage} className={classes.btn}>
-                Change Image
+                <FormattedMessage id='app_change_image' />
               </Button>
             </div>
             <div className={classes.rows}>

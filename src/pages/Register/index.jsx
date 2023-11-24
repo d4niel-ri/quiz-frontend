@@ -121,7 +121,7 @@ const Register = ({ isLogin }) => {
       <div className={classes.form_container}>
         <div className={classes.container}>
           <div className={classes.top_content}>
-            <h1>Let&rsquo;s Get Started</h1>
+            <h1><FormattedMessage id="app_lets_get_started" /></h1>
             <form onSubmit={submitRegister}>
               <div className={classes.input}>
                 <div className={classes.label}>
@@ -189,12 +189,16 @@ const Register = ({ isLogin }) => {
               </div>
               {/* error message */}
               {mainError && (<p className={classes.error}>{mainError}</p>)}
-              <Button type="submit" variant="contained" className={classes.btn}>Register</Button>
+              <Button type="submit" variant="contained" className={classes.btn}>
+                <FormattedMessage id="app_register" />
+              </Button>
             </form>
           </div>
 
           <div className={classes.bottom_content}>
-            Already have an account? <a href='/login'>Login here</a>
+            <FormattedMessage id='app_already_have_account' /> {" "}
+             {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+            <a href='/login'><FormattedMessage id='app_login_here' /></a>
           </div>
         </div>
       </div>

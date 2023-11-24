@@ -5,6 +5,7 @@ import clientReducer, { storedKey as storedClientState } from '@containers/Clien
 import homeReducer, { storedKey as storedHomeState } from '@pages/Home/reducer';
 import activityReducer, { storedKey as storedActivityState } from '@pages/Activity/reducer';
 import editQuizReducer, { storedKey as storedEditQuizState } from '@pages/EditQuiz/reducer';
+import adminReducer, { storedKey as storedAdminState } from '@pages/Admin/reducer';
 import languageReducer from '@containers/Language/reducer';
 
 import { mapWithPersistor } from './persistence';
@@ -15,6 +16,7 @@ const storedReducers = {
   home: { reducer: homeReducer, whitelist: storedHomeState },
   activity: { reducer: activityReducer, whitelist: storedActivityState },
   editQuiz: { reducer: editQuizReducer, whitelist: storedEditQuizState },
+  admin: { reducer: adminReducer, whitelist: storedAdminState },
 };
 
 const temporaryReducers = {

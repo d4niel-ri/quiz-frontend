@@ -118,4 +118,22 @@ main {
       }
     }
   }
+
+  @media screen and (max-width: $screen-md-limit) {
+    height: calc(100vh - 57px);
+    margin-top: 57px;
+    @include directionY;
+
+    .title_container {
+      width: 100%;
+      height: 25%;
+    }
+
+    .form_container {
+      width: 100%;
+      height: 75%;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 20px;
+    }
+  }
 }

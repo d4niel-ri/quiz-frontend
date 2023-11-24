@@ -119,4 +119,10 @@
       }
     }
   }
+
+  @media screen and (max-width: $screen-md-limit) {
+    height: calc(100vh - 57px);
+    margin-top: 57px;
+    @include directionX;
+  }
 }

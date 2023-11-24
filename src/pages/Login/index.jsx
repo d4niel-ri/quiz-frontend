@@ -94,14 +94,14 @@ const Login = ({ isLogin }) => {
   if (!hasMounted) return null;
 
   return (
-    <main>
+    <main className={classes.main}>
       <div className={classes.title_container}>
         Online Quiz
       </div>
       <div className={classes.form_container}>
         <div className={classes.container}>
           <div className={classes.top_content}>
-            <h1>Let&rsquo;s Get Started</h1>
+            <h1><FormattedMessage id='app_welcome_back' /></h1>
             <form onSubmit={submitLogin}>
               <div className={classes.input}>
                 <div className={classes.label}>
@@ -160,7 +160,9 @@ const Login = ({ isLogin }) => {
           </div>
 
           <div className={classes.bottom_content}>
-            New to Online Quiz? <a href='/register'>Signup here</a>
+            <FormattedMessage id="app_new_to_online_quiz" /> {" "}
+            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+            <a href='/register'><FormattedMessage id="app_signup_here" /></a>
           </div>
         </div>
       </div>

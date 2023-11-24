@@ -1,0 +1,62 @@
+@import '@styles/base';
+
+// Reset
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins;
+}
+
+.main {
+  margin-top: 70px;
+  position: relative;
+  background: $color-alabaster;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: fit-content;
+  min-height: calc(100vh - 70px);
+
+  .container {
+    margin-top: 1rem;
+    width: 90%;
+   
+    h1 {
+      font-size: 160%;
+      color: $color-marine-blue;
+      margin-bottom: 1rem;
+    }
+
+    .sections {
+      margin-top: 1rem;
+      @include directionY;
+      align-items: center;
+
+      section {
+        width: 100%;
+        max-width: 40rem;
+        @include directionY;
+
+        h2 {
+          font-size: 130%;
+          color: $color-marine-blue;
+        }
+
+        .users {
+          margin-top: 1rem;
+          width: 100%;
+          @include directionY;
+          gap: 0.75rem;
+          margin-bottom: 5rem;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: $screen-md-limit) {
+    height: calc(100vh - 57px);
+    margin-top: 57px;
+    @include directionX;
+  }
+}

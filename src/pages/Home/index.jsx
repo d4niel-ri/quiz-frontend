@@ -10,6 +10,7 @@ import { ping } from '@containers/App/actions';
 import { selectToken } from '@containers/Client/selectors';
 import { createStructuredSelector } from 'reselect';
 import defaultImage from '@static/images/bg-sidebar-desktop.svg';
+import { FormattedMessage } from 'react-intl';
 import { getQuizzes } from './actions';
 import { selectQuizzes } from './selectors';
 
@@ -34,7 +35,7 @@ const Home = ({ token, quizzes }) => {
   return (
     <main className={classes.main}>
       <div className={classes.container}>
-        <h1>Available Quizzes</h1>
+        <h1><FormattedMessage id='app_available_quizzes' /> </h1>
         <div className={classes.quizzes}>
           {quizzes.map((quiz) => (
             <div key={quiz.id} className={classes.card}>

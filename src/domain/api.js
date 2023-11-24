@@ -41,6 +41,11 @@ export const getMyUserData = (token) => callAPI(
   `${urls.user}/my-data`, 'GET', { authorization: `Bearer ${token}` }
 );
 export const register = (inputs) => callAPI(`${urls.user}/register`, 'POST', {}, {}, inputs);
+export const getUsers = (token) => callAPI(urls.user, 'GET', { authorization: `Bearer ${token}` });
+export const deleteUser = (token, user_id, confirmationPassword) => callAPI(
+  `${urls.user}/delete-user/${user_id}`, 'DELETE', { authorization: `Bearer ${token}`}, {}, 
+  {confirmationPassword}
+);
 export const getAvailableQuizzes = (token) => callAPI(
   `${urls.quiz}`, 'GET', { authorization: `Bearer ${token}` }
 );

@@ -1,5 +1,6 @@
 import MainLayout from '@layouts/MainLayout';
 import Activity from '@pages/Activity';
+import Admin from '@pages/Admin';
 import CreateQuiz from '@pages/CreateQuiz';
 import EditQuiz from '@pages/EditQuiz';
 
@@ -43,6 +44,13 @@ const routes = [
     name: 'Edit Quiz',
     protected: true,
     component: EditQuiz,
+    layout: MainLayout,
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    protected: true,
+    component: Admin,
     layout: MainLayout,
   },
   {

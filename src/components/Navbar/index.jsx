@@ -118,21 +118,21 @@ const Navbar = ({ isLogin, user, title, locale, theme }) => {
             <ListItemIcon>
               <SettingsIcon fontSize="small" className={classes.settings_icon} />
             </ListItemIcon>
-            Settings
+            <FormattedMessage id="app_settings" />
           </MenuItem>
           {user && user.role === 1 && (
             <MenuItem onClick={() => navigate('/admin')}>
               <ListItemIcon>
                 <SupervisorAccountIcon fontSize="small" className={classes.admin_icon} />
               </ListItemIcon>
-              Admin Page
+              <FormattedMessage id="app_admin_page" />
             </MenuItem>
           )}
           <MenuItem onClick={() => navigate('/activity')}>
             <ListItemIcon>
               <LocalActivitySharpIcon fontSize="small" className={classes.activity_icon} />
             </ListItemIcon>
-            Activity
+            <FormattedMessage id="app_activity" />
           </MenuItem>
           <Divider />
           <MenuItem onClick={() => dispatch(logout(navigate))}>
