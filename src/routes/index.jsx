@@ -3,6 +3,7 @@ import Activity from '@pages/Activity';
 import Admin from '@pages/Admin';
 import CreateQuestion from '@pages/CreateQuestion';
 import CreateQuiz from '@pages/CreateQuiz';
+import EditQuestion from '@pages/EditQuestion';
 import EditQuiz from '@pages/EditQuiz';
 
 import Home from '@pages/Home';
@@ -59,6 +60,13 @@ const routes = [
     name: 'Create Question',
     protected: true,
     component: CreateQuestion,
+    layout: MainLayout,
+  },
+  {
+    path: '/edit-question/:question_id',
+    name: 'Edit Question',
+    protected: true,
+    component: EditQuestion,
     layout: MainLayout,
   },
   {

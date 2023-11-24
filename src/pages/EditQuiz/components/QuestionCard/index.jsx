@@ -11,12 +11,17 @@ import { IconButton } from '@mui/material';
 import { deleteQuestion } from '@pages/EditQuiz/actions';
 import classes from "./style.module.scss";
 
-const QuestionCard = ({ question, dispatch, token }) => {
+const QuestionCard = ({ question, dispatch, token, navigate }) => {
   const answers = JSON.parse(question.answers);
 
   const handleDelete = (e) => {
     e.stopPropagation();
     dispatch(deleteQuestion(token, question.id));
+  }
+
+  const handleClickEdit = (e) => {
+    e.stopPropagation();
+    navigate(`/edit-question/${question.id}`);
   }
 
   return (
@@ -26,7 +31,7 @@ const QuestionCard = ({ question, dispatch, token }) => {
           {question.question_no}
         </div>
         <div className={classes.right_header}>
-          <IconButton className={classes.edit_icon}>
+          <IconButton className={classes.edit_icon} onClick={handleClickEdit}>
             <EditIcon />
           </IconButton>
           <IconButton className={classes.delete_icon} onClick={handleDelete}>
@@ -59,6 +64,7 @@ QuestionCard.propTypes = {
   question: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
+  navigate: PropTypes.func.isRequired,
 }
 
 export default QuestionCard;

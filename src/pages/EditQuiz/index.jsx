@@ -71,7 +71,10 @@ const EditQuiz = ({ user, token, quiz, questions }) => {
           <h2>Edit Questions</h2>
           <div className={classes.questions}>
             {questions.map((question) => 
-              <QuestionCard key={question.id} question={question} dispatch={dispatch} token={token} />
+              <QuestionCard 
+                key={question.id} question={question} dispatch={dispatch} token={token} 
+                navigate={navigate}  
+              />
             )}
           </div>
         </div>

@@ -67,6 +67,12 @@ export const getQuiz = (token, quiz_id) => callAPI(
 export const getQuestions = (token, quiz_id) => callAPI(
   `${urls.question}/${quiz_id}`, 'GET', { authorization: `Bearer ${token}` }
 );
+export const getQuestion = (token, question_id) => callAPI(
+  `${urls.question}/single`, 'GET', { authorization: `Bearer ${token}` }, {question_id}
+)
+export const updateQuestion = (token, question_id, inputs) => callAPI(
+  `${urls.question}/${question_id}`, 'PUT', { authorization: `Bearer ${token}` }, {}, inputs
+);
 export const updateQuiz = (token, quiz_id, inputs) => callAPI(
   `${urls.quiz}/${quiz_id}`, 'PUT', { authorization: `Bearer ${token}` }, {}, inputs
 );
